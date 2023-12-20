@@ -1,0 +1,25 @@
+<p-toast ></p-toast>
+<div class="container shadow rounded border mt-3 p-3">
+  <form #userForm="ngForm" (submit)="submitdata(userForm.value)" method="post">
+    <div class="mt-3">
+      <label for="" class="form-label">Name</label>
+      <input type="text" class="form-control" name="name" #name="ngModel" ngModel required="required">
+      <span [hidden]="name.valid || name.pristine" class=" text-danger">Must Enter Name</span>
+    </div>
+    <div class="mt-3">
+      <label for="" class="form-label">Email</label>
+      <input type="email" class="form-control" name="email" ngModel>
+    </div>
+    <div class="mt-3">
+      <label for="" class="form-label">Password</label>
+      <input type="password" class="form-control" name="password" #pass="ngModel" ngModel minlength="5" required="">
+
+      <span *ngIf="pass.errors?.['minlength']&&pass.touched" class="text-danger">Password min 5 charecter.</span>
+      <span [hidden]="(pass.errors?.['required']&&pass.touched)?false:true" class="text-danger">Password is required.</span>
+    </div>
+    <div class="mt-3">
+      <input type="submit" class="btn btn-primary" value="Save"  [disabled]="!userForm.valid">
+    </div>
+  </form>
+</div>
+<button (click)="alertPrime()">toast</button>

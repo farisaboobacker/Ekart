@@ -1,0 +1,104 @@
+<div class="container shadow rounded border mt-3 p-3">
+  <div class="row row-cols-4 g-4">
+
+    @for (row of Users; track $index) {
+      <div class="col-sm-12 col-md ">
+        <div class="card shadow h-100" >
+          <img src="../../assets/profile_placeholder.jpg" class="card-img "  alt="profile" >
+          <div class="card-body">
+            <h4 class="card-title">Name : {{row.name|uppercase}}</h4>
+            <p class="card-text">Username : {{row.username|lowercase}}</p>
+            <p class="card-text">Email : {{row.email}}</p>
+            <h5 class="card-subtitle">Address</h5>
+            <!-- <div class="container border shadow p-3"> -->
+              <!-- @for (location of row.address; track $index) { -->
+                <p class="card-text">Street : {{row.address.street}}</p>
+                <p class="card-text">Suite : {{row.address.suite}}</p>
+                <p class="card-text">City :{{row.address.city}}</p>
+                <p class="card-text">Zip Code : {{row.address.zipcode}}</p>
+                  <p class="card-text">Langitude : {{row.address.geo.lat}}</p>
+                  <p class="card-text">Longitude : {{row.address.geo.lng}}</p>
+                  <p class="card-text">Price : {{1000|currency:"₹"}}</p>
+                  <p class="card-text">DOB : {{"2022/12/05"|date:'fullDate'}}</p>
+                  <p class="card-text">Amout : {{10000|number}}</p>
+                  <p class="card-text">Amout : {{0.5|percent}}</p>
+                  <p class="card-text">Fees : {{10000|gst:20}}</p>
+
+                  <!-- <p class="card-text">Amout : {{Users|json}}</p> -->
+
+              <!-- } -->
+            </div>
+          <!-- </div> -->
+        </div>
+      </div>
+    }
+  </div>
+</div>
+<div class="container shadow rounded border mt-3 p-3">
+  <div class="d-flex justify-content-end">
+    <a href="/add-product" class="btn btn-primary">Create</a>
+  </div>
+  {{schoolName}}
+@for (item of student  ; track $index ) {
+  <div class="alert alert-success">
+    <h1>{{$index}}</h1><hr>
+    <h1>{{$count}}</h1><hr>
+    <h1>{{$even}}</h1><hr>
+    <h1>{{$odd}}</h1><hr>
+    <h1>{{$first}}</h1><hr>
+    <h1>{{$last}}</h1><hr>
+      <h1>{{item.Name}}</h1><hr>
+      <h3>{{item.Age}}</h3>
+    <h3>{{item.Result}}</h3>
+  </div>
+}
+@empty{
+  <div class="alert alert-danger fw-bolder">
+    Sorry no recordes found
+  </div>
+}
+
+@if(10<20){
+  <div class="container p-5 bg-danger-subtle">
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime, ullam.
+  </div>
+}
+@else{
+
+}
+
+<div class="container" *ngIf="10<20;then succ else fail">
+
+</div>
+
+<ng-template #succ class="p-5 w-50 bg-success-subtle mx-auto">
+  Content to render when the condition is true.
+</ng-template>
+
+<ng-template #fail class="p-5 w-50 bg-danger-subtle mx-auto">
+  Content to render when the condition is false.
+</ng-template>
+
+<div class="alert alert-warning" *ngFor="let row of student index as i">
+  <h1>{{i}}</h1><hr>
+  <h1>{{row.Name}}</h1><hr>
+  <h3>{{row.Age}}</h3>
+  <h3>{{row.Result}}</h3>
+</div>
+</div>
+
+<div [ngSwitch]="color" >
+  <p *ngSwitchCase="'red'" style="color: red;" class="p-5 w-50 bg-body-secondary"> red</p>
+  <p *ngSwitchCase="'blue'" style="color: blue;" class="p-5 w-50 bg-body-secondary"> blue</p>
+  <p *ngSwitchCase="'green'" style="color: green;" class="p-5 w-50 bg-body-secondary"> green</p>
+  <p *ngSwitchCase="'orange'" style="color: orange;" class="p-5 w-50 bg-body-secondary"> orange</p>
+</div>
+
+@switch(color){
+  @case("red"){
+    <p  class="p-5 w-50 bg-danger-subtle mx-auto"> red</p>
+  }
+  @case("green"){
+    <p  class="p-5 w-50 bg-success-subtle mx-auto text-danger"> Green</p>
+  }
+}

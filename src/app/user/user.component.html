@@ -1,0 +1,33 @@
+<p-toast ></p-toast>
+<div class="container shadow rounded p-4 mt-3">
+  <a href="/admin/adduser" class="btn btn-primary m-2">Add</a>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>EMAIL</th>
+        <th>PASSWORD</th>
+        <th>ACTIONS</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for ( row of UserData; track $index) {
+        <tr>
+          <td>{{row.id}}</td>
+          <td>{{row.name}}</td>
+          <td>{{row.email}}</td>
+          <td>{{row.password}}</td>
+          <td>
+            <a href="Edit" class="btn btn-warning me-2">Edit</a>
+            <button (click)="delete(row.id)" class="btn btn-danger me-2" >Delete</button>
+          </td>
+        </tr>
+      }@empty {
+        <tr class="table-danger text-center">
+          <td colspan="5">No Records</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

@@ -19,7 +19,7 @@
           <td>{{row.email}}</td>
           <td>{{row.password}}</td>
           <td>
-            <a href="Edit" class="btn btn-warning me-2">Edit</a>
+            <button (click)="edit(row.email)" class="btn btn-warning me-2">Edit</button>
             <button (click)="delete(row.id)" class="btn btn-danger me-2" >Delete</button>
           </td>
         </tr>

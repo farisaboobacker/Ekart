@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CommonService } from '../service/common.service';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -13,7 +14,11 @@ import { MessageService } from 'primeng/api';
   providers:[MessageService]
 })
 export class UserComponent implements OnInit{
-  constructor(protected Scommon:CommonService,private msgPrime: MessageService) {
+  constructor(
+    protected Scommon:CommonService,
+    private msgPrime: MessageService,
+    protected route:Router
+    ) {
   }
 
   UserData:any=[];
@@ -35,5 +40,10 @@ export class UserComponent implements OnInit{
         this.msgPrime.add({ severity: 'warn', summary: 'Failed', detail: 'Deletion Failed' });
       }
     });
+  }
+
+  edit(email:any){
+    this.Scommon.Email=email;
+    this.route.navigate(['admin/edituser']);
   }
 }

@@ -8,6 +8,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
 import { AddUserComponent } from './user/add-user/add-user.component';
+import { EditUserComponent } from './user/edit-user/edit-user.component';
 
 
 export const routes: Routes = [
@@ -29,7 +30,8 @@ export const routes: Routes = [
         {path:"signup",component:SignupComponent},
         {path:"login",component:LoginComponent},
         {path:"user",component:UserComponent},
-        {path:"adduser",component:AddUserComponent}
+        {path:"adduser",component:AddUserComponent},
+        {path:"edituser",component:EditUserComponent}
       ]
     },
 ];

@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
 import { AddUserComponent } from './user/add-user/add-user.component';
 import { EditUserComponent } from './user/edit-user/edit-user.component';
+import { CategoryComponent } from './product/category/category.component';
 
 
 export const routes: Routes = [
@@ -31,7 +32,8 @@ export const routes: Routes = [
         {path:"login",component:LoginComponent},
         {path:"user",component:UserComponent},
         {path:"adduser",component:AddUserComponent},
-        {path:"edituser",component:EditUserComponent}
+        {path:"edituser",component:EditUserComponent},
+        {path:"category",component:CategoryComponent}
       ]
     },
 ];
